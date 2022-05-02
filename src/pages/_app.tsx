@@ -1,0 +1,11 @@
+import type { AppProps } from 'next/app'
+import type { NextPage } from "next"
+import '@/scss/index.scss'
+
+const App: NextPage<AppProps> = ({ Component, pageProps }) => {
+	return (
+		<Component {...pageProps} />
+	)
+}
+
+export default App

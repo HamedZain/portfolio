@@ -1,0 +1,6 @@
+root = true
+
+[*]
+indent_size = 4
+indent_style = tab
+ij_typescript_use_double_quotes = true
