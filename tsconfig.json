@@ -23,8 +23,8 @@
 			"@/scss/*": [
 				"src/scss/*"
 			],
-			"@/components/*": [
-				"src/components/*"
+			"@/components": [
+				"src/components"
 			],
 			"@/hooks/*": [
 				"src/hooks/*"
