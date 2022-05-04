@@ -1,38 +1,21 @@
-import { client, gql } from '@/gql/client'
 import { GetStaticPaths, GetStaticProps, NextPage } from "next"
-import { MDXRemoteSerializeResult } from 'next-mdx-remote'
-import { serialize } from 'next-mdx-remote/serialize'
 import { MDX } from '@/components'
-
+import { getAllArticles, getArticleBySlug } from '@/api'
 import { Page } from "@/components"
-
-type ArticleType = {
-	id: string
-	slug: string
-	name: string
-	content: MDXRemoteSerializeResult<Record<string, unknown>>
-	createdAt: string
-}
-
-type ArticleTypeApi = {
-	id: string
-	slug: string
-	name: string
-	content: string
-	createdAt: string
-}
+import { Article } from "../../types/Article"
 
 interface ArticleProps {
-	article: ArticleType
+	article: Article
 }
 
 const Article: NextPage<ArticleProps> = ({ article }) => {
-
-	console.log({ article })
-
 	return <Page withHeader withFooter title="Article">
-		<h1>{article.name}</h1>
-		<MDX {...article.content} />
+		<article>
+			<header>
+				<h1>{article.name}</h1>
+			</header>
+			<MDX {...article.content} />
+		</article>
 	</Page>
 }
 
@@ -42,46 +25,32 @@ type StaticPathContext = {
 
 export const getStaticPaths: GetStaticPaths<StaticPathContext> = async () => {
 
-	const response = await client.request<{ articles: { slug: string }[] }>(gql`
-		{
-			articles {
-				slug
-			}
-		}
-	`)
+	const articles = await getAllArticles()
 
 	return {
-		paths: response.articles.map(article => ({
+		paths: articles.map(article => ({
 			params: {
 				slug: article.slug
 			}
 		})),
+
 		fallback: false
 	}
 
 }
 
-export const getStaticProps: GetStaticProps<{ article: ArticleType }, StaticPathContext> = async context => {
+export const getStaticProps: GetStaticProps<ArticleProps, StaticPathContext> = async context => {
 
-	const response = await client.request<{ article: ArticleTypeApi }>(gql`
-		{
-			article(where: {slug:"${context.params?.slug}"}) {
-				slug
-				name
-				content
-			}
-		}
-	`)
+	const slug = context.params?.slug
+	if (!slug) {
+		throw new Error('No slug')
+	}
 
-	const mdx = await serialize(response.article.content, {
-		mdxOptions: {
-			useDynamicImport: false,
-		}
-	})
+	const article = await getArticleBySlug(slug)
 
 	return {
 		props: {
-			article: { ...response.article, content: mdx }
+			article
 		}
 	}
 }
