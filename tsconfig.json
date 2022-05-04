@@ -32,6 +32,9 @@
 			"@/gql/*": [
 				"src/graphql/*"
 			],
+			"@/api": [
+				"src/api"
+			]
 		}
 	},
 	"include": [
