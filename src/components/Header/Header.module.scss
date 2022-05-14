@@ -1,0 +1,15 @@
+.container {
+
+	height: 80px;
+
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+
+	.brand {
+		font-size: 18px;
+		font-weight: 400;
+	}
+
+}
