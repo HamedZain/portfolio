@@ -1,7 +1,15 @@
 import { FC, PropsWithChildren } from "react"
+import styles from './Container.module.scss'
+import { className as cn } from '@/className'
 
-export const Container: FC<PropsWithChildren<{}>> = props => {
+interface ContainerProps {
+	className?: string
+}
+
+export const Container: FC<PropsWithChildren<ContainerProps>> = props => {
 	return (
-		<div>{props.children}</div>
+		<div className={cn(styles.el, props.className)}>
+			{props.children}
+		</div>
 	)
 }
