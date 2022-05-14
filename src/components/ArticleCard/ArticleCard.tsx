@@ -15,7 +15,7 @@ export const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
 	return <Link href={link}>
 		<div className={styles.el}>
 			<div className={styles.langIcon}>
-				<Image src="/lang/javascript.svg" alt="javascript" width={32} height={32} />
+				<Image src="/lang/javascript.svg" alt="javascript" layout="fixed" width={32} height={32} />
 			</div>
 			<div className={styles.wrapper}>
 				<h3>{article.name}</h3>
