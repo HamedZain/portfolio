@@ -1,16 +1,22 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { Page } from "@/components"
+import { Button, Container, Page } from "@/components"
 import { getAllArticles } from '@/api'
 import { Article } from "../types/Article"
-import {default as Link} from 'next/link'
+import { ArrowRightIcon } from "@/icons"
+import { ArticleCard } from "../components/ArticleCard/ArticleCard"
 
 const Home: NextPage<StaticProps> = props => {
 
 	return <Page withHeader withFooter title="Home | H.Zain">
-		<h1>Hello World, This is my portfolio</h1>
+		<Container>
+			<h1>Hello World</h1>
+			<p>My name is Hamed Zain, and this is my personal portfolio</p>
 
-		<h2>Articles</h2>
-		{props.articles.map(article => <Link key={article.id} href={`article/${article.slug}`}>{article.name}</Link>)}
+			<Button>Let's Talk! <ArrowRightIcon /></Button>
+
+			<h2>Articles</h2>
+			{props.articles.map(article => <ArticleCard key={article.id} article={article} />)}
+		</Container>
 	</Page>
 }
 
@@ -24,8 +30,8 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
 
 	return {
 		props: {
-			articles,
-		},
+			articles
+		}
 	}
 }
 
