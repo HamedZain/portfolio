@@ -7,7 +7,7 @@ import { ArticleCard } from "../components/ArticleCard/ArticleCard"
 
 const Home: NextPage<StaticProps> = props => {
 
-	return <Page withHeader withFooter title="Home | H.Zain">
+	return <Page withHeader withFooter title="Home | H.Zain" description="My name is Hamed, and this is my portfolio">
 		<Container>
 			<h1>Hello World</h1>
 			<p>My name is Hamed Zain, and this is my personal portfolio</p>
