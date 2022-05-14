@@ -1,0 +1,27 @@
+.el {
+	font: inherit;
+	color: currentColor;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	text-decoration: none;
+
+	height: 48px;
+	padding: 0 16px;
+	border-radius: 8px;
+
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+
+	&.icon {
+		padding: 0;
+		width: 48px;
+		height: 48px;
+	}
+
+	&:hover {
+		background-color: #EAF1FB;
+	}
+}
