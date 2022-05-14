@@ -9,9 +9,9 @@ export const Header: FC = () => {
 			<Container className={styles.container}>
 				<h1 className={styles.brand}>{`>_h.zain`}</h1>
 				<nav>
-					<Button icon><GithubIcon /></Button>
-					<Button icon><DribbbleIcon /></Button>
-					<Button icon><SunIcon /></Button>
+					<Button icon ariaLabel="My Github Account Link"><GithubIcon /></Button>
+					<Button icon ariaLabel="My Github Dribbble Link"><DribbbleIcon /></Button>
+					<Button icon ariaLabel="Toggle Color Mode"><SunIcon /></Button>
 				</nav>
 			</Container>
 		</header>
