@@ -12,7 +12,7 @@ const Home: NextPage<StaticProps> = props => {
 			<h1>Hello World</h1>
 			<p>My name is Hamed Zain, and this is my personal portfolio</p>
 
-			<Button>Let's Talk! <ArrowRightIcon /></Button>
+			<Button>Let&apos;s Talk! <ArrowRightIcon /></Button>
 
 			<h2>Articles</h2>
 			{props.articles.map(article => <ArticleCard key={article.id} article={article} />)}
