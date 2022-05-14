@@ -1,6 +1,7 @@
 import { FC } from "react"
 import styles from "./ArticleCard.module.scss"
 import { Article } from "../../types/Article"
+import {default as Image} from 'next/image'
 
 interface ArticleCardProps {
 	article: Article
@@ -9,7 +10,7 @@ interface ArticleCardProps {
 export const ArticleCard: FC<ArticleCardProps> = ({ article }) => {
 	return <div className={styles.el}>
 		<div className={styles.langIcon}>
-			<img src="lang/javascript.svg" alt="javascript" />
+			<Image src="/lang/javascript.svg" alt="javascript" width={32} height={32} />
 		</div>
 		<div className={styles.wrapper}>
 			<h3>{article.name}</h3>
